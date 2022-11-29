@@ -19,6 +19,7 @@ public class HttpControllerTest {
 		return "lombok test완료";
 	}
 	
+	
 	@GetMapping("/http/get")
 	public String getTest(Member m) {
 		return "get 요청" + m.getId() + "    " + m.getUsername();
