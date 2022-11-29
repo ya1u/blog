@@ -1,9 +1,9 @@
 package com.cos.blog.service;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.model.Users;
 import com.cos.blog.repository.UserRepository;
@@ -15,14 +15,12 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Transactional
-	public Integer 회원가입(Users user) {
-		try {
-			userRepository.save(user); // 하나의 트렌젝션
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("UserService: 회원가입() : " + e.getMessage());
-		}
-		return -1;
+	public void 회원가입(Users user) {
+		userRepository.save(user); // 하나의 트렌젝션
 	}
+	
+//	@Transactional(readOnly = true)  // select 할 때 트렌젝션 시작, 서비스 종료시에 트렌젝션 종료(정합성)
+//	public Users 로그인(Users user) {
+//		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//	}
 }
