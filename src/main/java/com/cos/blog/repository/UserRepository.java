@@ -1,5 +1,7 @@
 package com.cos.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cos.blog.model.Users;
@@ -9,6 +11,9 @@ import com.cos.blog.model.Users;
 // 자동으로 bean등록이 된다.
 // @Repository 생략가능
 public interface UserRepository extends JpaRepository<Users, Integer> {
+	
+	// select * from user where username = ?;
+	Optional<Users> findByUsername(String username);
 	
 	// 로그인을 위한 함수
 	// JPA Naming 전략

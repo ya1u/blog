@@ -23,7 +23,7 @@ public class UserApiController {
 		System.out.println("UserApiController 호출됨");
 		
 		// 받아온 값은 username, password, email만 있다.
-		user.setRoles(RoleType.USER);
+//		user.setRoles(RoleType.USER);
 		
 		// 실제로 DB에 insert를 하고 아래에서(1자리에) return이 된다.
 		userService.회원가입(user);
