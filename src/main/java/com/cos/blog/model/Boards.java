@@ -48,8 +48,7 @@ public class Boards {
 	@Lob // 대용량 데이터
 	private String content;
 	
-	@ColumnDefault("0")
-	private String count; // 조회수
+	private int count; // 조회수
 	
 	@ManyToOne(fetch = FetchType.EAGER) //Many=Board, User = One 한명이 여러개의 게시글을 쓸 수 있다.
 	@JoinColumn(name = "userid")
