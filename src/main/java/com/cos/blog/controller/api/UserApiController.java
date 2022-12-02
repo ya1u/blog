@@ -5,6 +5,7 @@ package com.cos.blog.controller.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +31,14 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 		// result가 1이면 성공, -1이면 실패
 		// 자바 오브젝트를 리턴 받아옴.
+	}
+	
+	// 회원정보 수정
+	@PutMapping("/user")
+	public ResponseDto<Integer> update(@RequestBody Users user) {
+		// json 형태를 받기위한 RequestBody
+		userService.회원수정(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
 //	@PostMapping("/api/user/login")
